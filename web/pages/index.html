@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="margin: 20px">
+    <nav>
+      <ul style="display: flex; gap: 20px">
+        <li>
+          <a href="./index.html"> หน้าแรก </a>
+        </li>
+        <li>
+          <a href="./game.html"> เกม </a>
+        </li>
+        <li>
+          <a href="./online.html"> ออนไลน์ </a>
+        </li>
+        <li>
+          <a href="./chat.html"> แชท </a>
+        </li>
+        <li>
+          <a href="./test.html"> ทดสอบ </a>
+        </li>
+      </ul>
+    </nav>
+    <hr />
+    <div style="display: flex; gap: 20px">
+      <div>
+        <p>simple calculator</p>
+        <div
+          style="
+            width: fit-content;
+            border: 1px solid black;
+            padding: 20px;
+            background-color: rgb(150, 167, 0);
+            border-radius: 8px;
+          "
+        >
+          <div
+            style="
+              background-color: rgb(243, 243, 243);
+              padding: 20px;
+              border-radius: 4px;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <input type="number" id="number1" />
+            <input type="number" id="number2" />
+            <div style="text-align: end">
+              <button id="+">+</button>
+              <button id="-">-</button>
+              <button id="*">*</button>
+              <button id="/">/</button>
+            </div>
+            <span>
+              result:
+              <span id="result"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p>simple grade calculator</p>
+        <div
+          style="
+            width: fit-content;
+            padding: 12px;
+            border: 1px dashed black;
+            border-radius: 8px;
+          "
+        >
+          <input type="text" id="grade-input" />
+          <button id="grade-button">submit</button>
+          <div
+            style="
+              margin-top: 12px;
+              background-color: rgb(255, 138, 138);
+              height: 40px;
+              padding: 12px;
+              border-radius: 12px;
+            "
+          >
+            <div>
+              result :
+              <span id="answer-grade"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="../scripts/home.js"></script>
+</html>
