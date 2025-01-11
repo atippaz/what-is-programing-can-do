@@ -45,14 +45,22 @@ async function initState() {
         e.preventDefault();
         e.stopPropagation();
         if (color.qty <= 1) return;
-        await removeColor(colorPencil);
+        if (await removeColor(colorPencil)) {
+          color.qty -= 1;
+          mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
+          pencilContainer.removeChild(pencilContainer.lastChild);
+        }
       });
     penclAction
       .querySelector("#plus")
       .addEventListener("click", async function (e) {
         e.preventDefault();
         e.stopPropagation();
-        await addColor(colorPencil);
+        if (await addColor(colorPencil)) {
+          color.qty += 1;
+          mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
+          pencilContainer.appendChild(pencilContainer.lastChild);
+        }
       });
     pencilAction.appendChild(penclAction);
     pencilAction.style.marginBottom = "12px";
@@ -74,6 +82,7 @@ async function removeColor(color) {
       method: "DELETE",
     }
   );
+  return result.status === 200;
 }
 async function addColor(color) {
   const result = await fetch(
@@ -82,6 +91,7 @@ async function addColor(color) {
       method: "POST",
     }
   );
+  return result.status === 200;
 }
 // initState();
 document.addEventListener("DOMContentLoaded", () => {
