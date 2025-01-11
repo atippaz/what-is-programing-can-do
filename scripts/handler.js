@@ -49,15 +49,14 @@ async function initState() {
         e.preventDefault();
         e.stopPropagation();
 
-        const pencilBodies = pencilContainer.querySelectorAll(
-          `[data-color="${colorPencil}"]`
-        );
-
-        if (color.qty <= 1 || pencilBodies.length === 0) return;
+        if (color.qty <= 1) return;
 
         if (await removeColor(colorPencil)) {
           color.qty -= 1;
           mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
+          const pencilBodies = pencilContainer.querySelectorAll(
+            `[data-color="${colorPencil}"]`
+          );
           pencilBodies[0].remove();
         }
       });
