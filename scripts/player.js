@@ -7,9 +7,9 @@ export async function movePlayer(player, direction, distance) {
   const gameboard = document.getElementById("board-game");
   const gameboardRect = gameboard.getBoundingClientRect();
 
-  const maxFrameBottom = gameboardRect.bottom;
+  const maxFrameBottom = gameboardRect.bottom - player.clientHeight;
   const maxFrameTop = gameboardRect.y;
-  const maxFrameRight = gameboardRect.right;
+  const maxFrameRight = gameboardRect.right - player.clientWidth;
   const maxFrameLeft = gameboardRect.x;
 
   let error = false;
