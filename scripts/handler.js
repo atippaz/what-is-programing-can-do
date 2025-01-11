@@ -1,7 +1,9 @@
 async function initState() {
   const pencilCanvas = document.getElementById("pencil-canvas");
   pencilCanvas.innerText = "";
-  const api = await (await fetch("http://localhost:3000/pencils")).json();
+  const api = await (
+    await fetch("https://what-is-programing-can-do.onrender.com/pencils")
+  ).json();
   const groupedData = api.reduce((acc, item) => {
     if (acc[item.color]) {
       acc[item.color].qty += item.qty;
@@ -66,14 +68,20 @@ async function initState() {
   pencilCanvas.appendChild(divContainer);
 }
 async function removeColor(color) {
-  const result = await fetch(`http://localhost:3000/pencils/${color}`, {
-    method: "DELETE",
-  });
+  const result = await fetch(
+    `https://what-is-programing-can-do.onrender.com/pencils/${color}`,
+    {
+      method: "DELETE",
+    }
+  );
 }
 async function addColor(color) {
-  const result = await fetch(`http://localhost:3000/pencils/${color}`, {
-    method: "POST",
-  });
+  const result = await fetch(
+    `https://what-is-programing-can-do.onrender.com/pencils/${color}`,
+    {
+      method: "POST",
+    }
+  );
 }
 // initState();
 document.addEventListener("DOMContentLoaded", () => {

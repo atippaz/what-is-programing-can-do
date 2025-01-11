@@ -11,7 +11,7 @@ const playerImages = {
   idle: "Player_idle.gif",
 };
 
-const baseAssetAddress = "../asset/";
+const baseAssetAddress = "./asset/";
 
 const element = {
   startGame: "start-game",
