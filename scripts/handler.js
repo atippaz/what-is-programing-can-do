@@ -26,6 +26,7 @@ async function initState() {
       );
       const pencilBody = pencilBodyTemplate.content.cloneNode(true);
       pencilBody.querySelector("div").style.backgroundColor = colorPencil;
+      pencilBody.setAttribute("data-color", colorPencil);
       pencilContainer.appendChild(pencilBody);
     }
     const penclHeadTemplate = document.getElementById("pencil-head-template");
@@ -44,24 +45,47 @@ async function initState() {
       .addEventListener("click", async function (e) {
         e.preventDefault();
         e.stopPropagation();
-        if (color.qty <= 1) return;
+
+        const pencilBodies = pencilContainer.querySelectorAll(
+          `[data-color="${colorPencil}"]`
+        );
+
+        if (color.qty <= 1 || pencilBodies.length === 0) return;
+
         if (await removeColor(colorPencil)) {
           color.qty -= 1;
           mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
-          pencilContainer.removeChild(pencilContainer.firstChild);
+
+          pencilBodies[0].remove();
           console.log("After Remove:", pencilContainer.childNodes);
         }
       });
+
     penclAction
       .querySelector("#plus")
       .addEventListener("click", async function (e) {
         e.preventDefault();
         e.stopPropagation();
+
         if (await addColor(colorPencil)) {
           color.qty += 1;
           mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
-          const newPencil = pencilContainer.lastChild.cloneNode(true);
-          pencilContainer.appendChild(newPencil);
+
+          const pencilBodyTemplate = document.getElementById(
+            "pencil-body-template"
+          );
+          const newPencilBody = pencilBodyTemplate.content.cloneNode(true);
+          newPencilBody.querySelector("div").style.backgroundColor =
+            colorPencil;
+          newPencilBody
+            .querySelector("div")
+            .setAttribute("data-color", colorPencil);
+
+          pencilContainer.insertBefore(
+            newPencilBody,
+            pencilContainer.lastChild
+          );
+
           console.log("Added new pencil:", pencilContainer.childNodes);
         }
       });
