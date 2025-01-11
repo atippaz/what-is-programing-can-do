@@ -82,7 +82,7 @@ async function initState() {
           newPencilBody
             .querySelector("div")
             .setAttribute("data-color", colorPencil);
-          pencilContainer.removeChild(pencilHead);
+          pencilContainer.removeChild(pencilContainer.lastChild);
           pencilContainer.insertBefore(
             newPencilBody,
             pencilContainer.lastChild
