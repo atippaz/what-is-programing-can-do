@@ -68,9 +68,10 @@ async function initState() {
         if (await addColor(colorPencil)) {
           color.qty += 1;
           mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
-          const pencilHead = penclHeadTemplate.content.cloneNode(true);
-          pencilHead.querySelector(".pencil-color").style["border-left-color"] =
-            colorPencil;
+          const _pencilHead = penclHeadTemplate.content.cloneNode(true);
+          _pencilHead.querySelector(".pencil-color").style[
+            "border-left-color"
+          ] = colorPencil;
 
           const pencilBodyTemplate = document.getElementById(
             "pencil-body-template"
@@ -81,12 +82,12 @@ async function initState() {
           newPencilBody
             .querySelector("div")
             .setAttribute("data-color", colorPencil);
-          pencilContainer.removeChild(pencilContainer.lastChild);
+          pencilContainer.removeChild(pencilHead);
           pencilContainer.insertBefore(
             newPencilBody,
             pencilContainer.lastChild
           );
-          pencilContainer.insertBefore(pencilHead, pencilContainer.lastChild);
+          pencilContainer.insertBefore(_pencilHead, pencilContainer.lastChild);
           console.log("Added new pencil:", pencilContainer.childNodes);
         }
       });
