@@ -26,7 +26,7 @@ async function initState() {
       );
       const pencilBody = pencilBodyTemplate.content.cloneNode(true);
       pencilBody.querySelector("div").style.backgroundColor = colorPencil;
-      pencilBody.setAttribute("data-color", colorPencil);
+      pencilBody.querySelector("div").setAttribute("data-color", colorPencil);
       pencilContainer.appendChild(pencilBody);
     }
     const penclHeadTemplate = document.getElementById("pencil-head-template");
