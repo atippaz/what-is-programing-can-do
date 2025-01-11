@@ -59,7 +59,9 @@ async function initState() {
         if (await addColor(colorPencil)) {
           color.qty += 1;
           mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
-          pencilContainer.appendChild(pencilContainer.lastChild);
+          pencilContainer.appendChild(
+            pencilContainer.lastChild.cloneNode(true)
+          );
         }
       });
     pencilAction.appendChild(penclAction);
