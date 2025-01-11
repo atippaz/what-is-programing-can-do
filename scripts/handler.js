@@ -82,7 +82,7 @@ async function initState() {
             .querySelector("div")
             .setAttribute("data-color", colorPencil);
           const _pencilHead = pencilContainer.querySelector(
-            `#pencil-head-${color}`
+            `#pencil-head-${color.color}`
           );
           pencilContainer.removeChild(_pencilHead);
           pencilContainer.insertBefore(
