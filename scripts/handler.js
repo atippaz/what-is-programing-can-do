@@ -49,6 +49,7 @@ async function initState() {
           color.qty -= 1;
           mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
           pencilContainer.removeChild(pencilContainer.firstChild);
+          console.log("After Remove:", pencilContainer.childNodes);
         }
       });
     penclAction
@@ -59,9 +60,9 @@ async function initState() {
         if (await addColor(colorPencil)) {
           color.qty += 1;
           mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
-          pencilContainer.appendChild(
-            pencilContainer.lastChild.cloneNode(true)
-          );
+          const newPencil = pencilContainer.lastChild.cloneNode(true);
+          pencilContainer.appendChild(newPencil);
+          console.log("Added new pencil:", pencilContainer.childNodes);
         }
       });
     pencilAction.appendChild(penclAction);
