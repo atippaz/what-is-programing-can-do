@@ -33,7 +33,9 @@ async function initState() {
     const pencilHead = penclHeadTemplate.content.cloneNode(true);
     pencilHead.querySelector(".pencil-color").style["border-left-color"] =
       colorPencil;
-    pencilHead.setAttribute("id", `pencil-head-${colorPencil}`);
+    pencilHead
+      .querySelector(".pencil-head")
+      .setAttribute("id", `pencil-head-${colorPencil}`);
     pencilContainer.appendChild(pencilHead);
 
     const penclActionTemplate = document.getElementById(
