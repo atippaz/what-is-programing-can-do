@@ -1,40 +1,16 @@
-let diffHeight = null;
-let diffWidth = null;
 export async function movePlayer(player, direction, distance) {
   const _c = document.defaultView.getComputedStyle(player);
   let currentPosition = parseInt(_c[direction].split("px")[0]);
   let targetPosition = currentPosition + distance;
   let step = distance > 0 ? 5 : -5;
+
   const gameboard = document.getElementById("board-game");
   const gameboardRect = gameboard.getBoundingClientRect();
-  if (diffHeight == null) {
-    diffHeight = currentPosition;
-  }
-  if (diffWidth == null) {
-    diffWidth = parseInt(_c["left"].split("px")[0]);
-  }
-  console.log(gameboard.style);
-  console.log(gameboard.style.left);
-  console.log(gameboard.style.top + gameboard.style.height);
-  console.log(gameboard.style.left + gameboard.style.width);
 
-  const height = gameboardRect.height; /*+ diffHeight*/
-  const width = gameboardRect.width; /*+ diffWidth*/
-
-  const maxFrameBottom = height - player.clientHeight;
-  const maxFrameTop = height + player.clientHeight;
-  const maxFrameRight = width - player.clientWidth;
-  const maxFrameLeft = width;
-
-  console.log("b", maxFrameBottom);
-  console.log("t", maxFrameTop);
-  console.log("r", maxFrameRight);
-  console.log("l", maxFrameLeft);
-  console.log("h", height);
-  console.log("w", width);
-  console.log("dh", diffHeight);
-  console.log("dw", diffWidth);
-  console.log("c", currentPosition);
+  const maxFrameBottom = gameboardRect.bottom - player.clientHeight;
+  const maxFrameTop = gameboardRect.x;
+  const maxFrameRight = gameboardRect.left - player.clientWidth;
+  const maxFrameLeft = gameboardRect.y;
 
   let error = false;
   return new Promise((resolve) => {
