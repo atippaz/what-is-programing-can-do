@@ -49,7 +49,7 @@ async function initState() {
         e.preventDefault();
         e.stopPropagation();
 
-        if (color.qty <= 1) return;
+        if (color.qty <= 2) return;
 
         if (await removeColor(colorPencil)) {
           color.qty -= 1;
