@@ -19,13 +19,8 @@ const element = {
   player: "player",
 };
 
-// const startgame = document.getElementById(element.startGame);
 let hasPress = false;
 
-// startgame.addEventListener("click", (e) => {
-//   startgame.style.display = "none";
-
-// });
 document.addEventListener("DOMContentLoaded", () => {
   const gameboard = document.getElementById(element.boardGame);
   var elem = document.createElement("img");

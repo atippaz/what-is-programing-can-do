@@ -48,7 +48,7 @@ async function initState() {
         if (await removeColor(colorPencil)) {
           color.qty -= 1;
           mile.innerText = `pencil ${color.color} long : ${color.qty} m.`;
-          pencilContainer.removeChild(pencilContainer.lastChild);
+          pencilContainer.removeChild(pencilContainer.firstChild);
         }
       });
     penclAction
@@ -96,7 +96,4 @@ async function addColor(color) {
 // initState();
 document.addEventListener("DOMContentLoaded", () => {
   initState();
-  document.removeEventListener("DOMContentLoaded", () => {
-    console.log("remove");
-  });
 });
