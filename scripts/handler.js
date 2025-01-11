@@ -127,3 +127,12 @@ async function addColor(color) {
 document.addEventListener("DOMContentLoaded", () => {
   initState();
 });
+const colorSubmit = document.getElementById("color-submit");
+colorSubmit.addEventListener("click", async function (e) {
+  e.preventDefault();
+  const colorText = document.getElementById("color-text");
+  const color = colorText.value;
+  if (await addColor(color)) {
+    initState();
+  }
+});
